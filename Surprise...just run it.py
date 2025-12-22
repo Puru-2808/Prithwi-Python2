@@ -1,0 +1,40 @@
+a=17
+b=7
+
+if a==17 and b==7:
+    import turtle
+    t=turtle.Turtle()
+    t.getscreen().bgcolor("orange")
+    t.speed(70)
+    t.penup()
+    t.left(180)
+    t.forward(350)
+    t.pendown()
+    for i in range(17):
+        t.forward(30)
+        t.left(170)
+        t.forward(30)
+    t.penup()
+    t.right(190)
+    t.forward(80)
+    t.pendown()
+    t.write("Happy Anniversary my love")
+    t.penup()
+    t.forward(610)
+    t.pendown()
+    for i in range(17):
+        t.forward(30)
+        t.left(170)
+        t.forward(30)
+    t.penup()
+    t.left(180)
+    t.forward(410)
+    t.right(170)
+    t.pendown()
+    t.forward(120.65)
+    t.circle(90, 240)
+    t.left(15)
+    t.right(180)
+    t.circle(90,240)
+    t.forward(140)
+turtle.done()
