@@ -72,12 +72,19 @@ for i in range(len(alist)):
             term *= (lam - alist[j]) / (alist[i] - alist[j])
     poly += term
 
-E0_val = Energy_levels[0]
-E1 = sp.diff(poly, lam, 1).subs(lam, 0)
-E2 = sp.diff(poly, lam, 2).subs(lam, 0) / 2
-E3 = sp.diff(poly, lam, 3).subs(lam, 0) / 6
+degree = 3
+coeffs = np.polyfit(alist, Energy_levels, degree)
+
+E3 = coeffs[0]
+E2 = coeffs[1]
+E1 = coeffs[2]
+E0_val = coeffs[3]
 
 print(f"E0 (Unperturbed) = {E0_val:.8f}")
 print(f"First order correction (E1): {E1:.8f}")
 print(f"Second order correction (E2): {E2:.8f}")
 print(f"Third order correction (E3): {E3:.8f}")
+
+b = 0.5   # lambda value for which we want to calculate the total energy
+E_total = E0_val + b*E1 + (b*2)*E2 + (b*3)*E3
+print("Total corrected ground state energy:", E_total)
